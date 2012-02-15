@@ -1,4 +1,4 @@
-// ucque_ga.pas         12.02.2012  Гудулин А.О.
+// uique_ga.pas         12.02.2012  Гудулин А.О.
 // Модуль, реализующий представление очереди ОБЪЕКТОМ TCQueue
 // с соответствующими операциями работы с очередью
 
@@ -8,56 +8,60 @@ interface
     type
         TCQueue = Object
             len: integer;
+            startPos: integer;
+            endPos: integer;
             val: array[1..50] of char;
-            procedure init;
-            function push(c:char): boolean;
-            function pop(var c:char): boolean;
-            function top(var c:char): boolean;
+            constructor init;
+            function push(n:char): boolean;
+            function pop(var n:char): boolean;
+            function top(var n:char): boolean;
             procedure show;
             function errorHandler(count:integer): boolean;
         end;
+    
+    procedure incMod(var n: integer);
 
 implementation
-    procedure TCQueue.init;
-        var
-            i: integer;
+    constructor TCQueue.init;
         begin
-            for i:=1 to 50 do
-                val[i] := 'a';
             len := 0;
+            startPos := 1;
+            endPos := 1;
         end;
 
-    function TCQueue.push(c:char): boolean;
+    procedure incMod(var n: integer);
         begin
-            
+            if n >= 50 then n := 1 else inc(n);
+        end;
+
+    function TCQueue.push(n:char): boolean;
+        begin
             if errorHandler(len+1) then begin
-                inc(len);
-                val[len] := c;
+                inc(len); // увеличиваем count
+                val[endPos] := n; // помещаем значение в конец
+                incMod(endPos); // увеличиваем endPos
                 push := true;
             end
             else
                 push := false;
         end;
     
-    function TCQueue.pop(var c:char): boolean;
-        var
-            i: integer;
+    function TCQueue.pop(var n:char): boolean;
         begin
-            if errorHandler(len) then begin
-                c := val[1];
+            if errorHandler(len-1) then begin
                 dec(len);
-                for i:=1 to len do
-                    val[i] := val[i+1];
+                n := val[startPos]; // значение в startPos
+                incMod(startPos); // двигаем startPos
                 pop := true;
             end
             else
                 pop := false;
         end;
 
-    function TCQueue.top(var c:char): boolean;
+    function TCQueue.top(var n:char): boolean;
         begin
-            if errorHandler(len) then begin
-                c := val[1];
+            if errorHandler(len-1) then begin
+                n := val[startPos]; // значение в startPos
                 top := true;
             end
             else
@@ -65,25 +69,32 @@ implementation
         end;
 
     procedure TCQueue.show;
-        var
-            i: integer;
-        begin
-            if errorHandler(len) then begin
-                write('Состояние очереди: [');
-                for i:=1 to len-1 do begin
-                    write(val[i], ', ');
-                end;
-                writeln(val[len], ']');
+    var
+        i: integer;
+    begin
+        write('Состояние очереди: [');
+        if len = 0 then writeln(']')
+        else if errorHandler(len) then begin
+            for i:=startPos to startPos+len-2 do begin
+                if i > 50 then 
+                    write(val[i mod 50], ', ')
+                else write(val[i], ', ');
             end;
+
+            if endPos <> 1 then
+                writeln(val[endPos-1], ']')
+            else
+                writeln(val[50], ']')
         end;
+    end;
     
     function TCQueue.errorHandler(count:integer): boolean;
         var
             error: byte;
         begin
-            if (count > 50) then
+            if count > 10 then
                 error := 1
-            else if (count < 1) then
+            else if count < 0 then
                 error := 2
             else
                 error := 0;

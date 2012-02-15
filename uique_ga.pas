@@ -8,6 +8,8 @@ interface
     type
         TIQueue = Object
             len: integer;
+            startPos: integer;
+            endPos: integer;
             val: array[1..10] of integer;
             constructor init;
             function push(n:integer): boolean;
@@ -16,23 +18,28 @@ interface
             procedure show;
             function errorHandler(count:integer): boolean;
         end;
+    
+    procedure incMod(var n: integer);
 
 implementation
     constructor TIQueue.init;
-        {var
-            i: integer;}
         begin
-            {for i:=1 to 10 do
-                val[i] := 0;}
             len := 0;
+            startPos := 1;
+            endPos := 1;
+        end;
+
+    procedure incMod(var n: integer);
+        begin
+            if n >= 10 then n := 1 else inc(n);
         end;
 
     function TIQueue.push(n:integer): boolean;
         begin
-            
             if errorHandler(len+1) then begin
-                inc(len);
-                val[len] := n;
+                inc(len); // увеличиваем count
+                val[endPos] := n; // помещаем значение в конец
+                incMod(endPos); // увеличиваем endPos
                 push := true;
             end
             else
@@ -40,14 +47,11 @@ implementation
         end;
     
     function TIQueue.pop(var n:integer): boolean;
-        var
-            i: integer;
         begin
-            if errorHandler(len) then begin
-                n := val[1];
+            if errorHandler(len-1) then begin
                 dec(len);
-                for i:=1 to len do
-                    val[i] := val[i+1];
+                n := val[startPos]; // значение в startPos
+                incMod(startPos); // двигаем startPos
                 pop := true;
             end
             else
@@ -56,8 +60,8 @@ implementation
 
     function TIQueue.top(var n:integer): boolean;
         begin
-            if errorHandler(len) then begin
-                n := val[1];
+            if errorHandler(len-1) then begin
+                n := val[startPos]; // значение в startPos
                 top := true;
             end
             else
@@ -65,25 +69,32 @@ implementation
         end;
 
     procedure TIQueue.show;
-        var
-            i: integer;
-        begin
-            if errorHandler(len) then begin
-                write('Состояние очереди: [');
-                for i:=1 to len-1 do begin
-                    write(val[i], ', ');
-                end;
-                writeln(val[len], ']');
+    var
+        i: integer;
+    begin
+        write('Состояние очереди: [');
+        if len = 0 then writeln(']')
+        else if errorHandler(len) then begin
+            for i:=startPos to startPos+len-2 do begin
+                if i > 10 then 
+                    write(val[i mod 10], ', ')
+                else write(val[i], ', ');
             end;
+
+            if endPos <> 1 then
+                writeln(val[endPos-1], ']')
+            else
+                writeln(val[10], ']')
         end;
+    end;
     
     function TIQueue.errorHandler(count:integer): boolean;
         var
             error: byte;
         begin
-            if (count > 10) then
+            if count > 10 then
                 error := 1
-            else if (count < 1) then
+            else if count < 0 then
                 error := 2
             else
                 error := 0;

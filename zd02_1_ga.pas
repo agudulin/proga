@@ -20,7 +20,7 @@ procedure init(var queue:TQueue);
         queue[-2]:= 1; // Позиция последнего элемента
     end;
 
-function errorHandler(startPos:integer; endPos:integer; count:integer): boolean;
+function errorHandler(count:integer): boolean;
     var
         error: byte;
     begin
@@ -45,28 +45,17 @@ function errorHandler(startPos:integer; endPos:integer; count:integer): boolean;
         end;
     end;
 
-procedure incMod_p(var n: integer);
+procedure incMod(var n: integer);
     begin
         if n >= 10 then n := 1 else inc(n);
     end;
 
-function incMod_f(n: integer): integer;
-    begin
-        if n >= 10 then incMod_f := 1 else incMod_f := n+1;
-    end;
-
 function push(var queue:TQueue; val:integer): boolean;
-    var
-        count, startPos, endPos: integer;
-    begin
-        count := queue[0];
-        startPos := queue[-1];
-        endPos := queue[-2];
-
-        if errorHandler(startPos, incMod_f(endPos), count+1) then begin
+    begin    
+        if errorHandler(queue[0]+1) then begin
             inc(queue[0]); // увеличиваем count
-            queue[endPos] := val;
-            incMod_p(queue[-2]); // увеличиваем endPos
+            queue[queue[-2]] := val; // помещаем значение в конец очереди
+            incMod(queue[-2]); // увеличиваем endPos
             push := true;
         end
         else
@@ -74,17 +63,11 @@ function push(var queue:TQueue; val:integer): boolean;
     end;
 
 function pop(var queue:TQueue; var val:integer): boolean;
-    var
-        count, startPos, endPos: integer;
     begin
-        count := queue[0];
-        startPos := queue[-1];
-        endPos := queue[-2];
-
-        if errorHandler(startPos, endPos, count-1) then begin
+        if errorHandler(queue[0]-1) then begin
             dec(queue[0]);
-            val := queue[startPos];
-            incMod_p(queue[-1]); // двигаем startPos
+            val := queue[queue[-1]]; // значение в startPos
+            incMod(queue[-1]); // двигаем startPos
             pop := true;
         end
         else
@@ -92,15 +75,9 @@ function pop(var queue:TQueue; var val:integer): boolean;
     end;
 
 function top(var queue:TQueue; var val:integer): boolean;
-    var
-        count, startPos, endPos: integer;
     begin
-        count := queue[0];
-        startPos := queue[-1];
-        endPos := queue[-2];
-
-        if errorHandler(startPos, endPos, count-1) then begin
-            val := queue[startPos];
+        if errorHandler(queue[0]-1) then begin
+            val := queue[queue[-1]]; // значение в startPos
             top := true;
         end
         else
@@ -109,20 +86,19 @@ function top(var queue:TQueue; var val:integer): boolean;
 
 procedure show(var queue:TQueue);
     var
-        i, ind, count, startPos, endPos: integer;
+        i, count, startPos, endPos: integer;
     begin
         count := queue[0];
         startPos := queue[-1];
         endPos := queue[-2];
+        {writeln(startPos, ' ', endPos, ' ', count);}
         write('Состояние очереди: [');
         if count = 0 then writeln(']')
-        else if errorHandler(startPos, endPos, count) then begin
-            {for i:=-2 to 0 do
-                write(queue[i], ':');}
+        else if errorHandler(count) then begin
             for i:=startPos to startPos+count-2 do begin
-                ind := i;
-                if i > 10 then ind := i mod 10;
-                write(queue[ind], ', ');
+                if i > 10 then 
+                    write(queue[i mod 10], ', ')
+                else write(queue[i], ', ');
             end;
             if endPos = 1 then endPos := 11;
             writeln(queue[endPos-1], ']');
