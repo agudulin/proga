@@ -2,7 +2,7 @@
 // Программа тестирования функций работы с очередью
 
 type
-    TQueue = array[0..10] of integer;
+    TQueue = array[-2..10] of integer;
 
 var
     inputStr: string;
@@ -13,20 +13,21 @@ procedure init(var queue:TQueue);
     {var
         i: integer;}
     begin
-        {for i:=1 to 10 do
-            queue[i] := 0;}
+        for i:=1 to 10 do
+            queue[i] := 0;
         queue[0] := 0; // Количество элементов
-        {queue[-1]:= 0; // Позиция первого элемента
-        queue[-2]:= 0; // Позиция последнего элемента}
+        queue[-1]:= 1; // Позиция первого элемента
+        queue[-2]:= 1; // Позиция последнего элемента
     end;
 
-function errorHandler({startPos:integer; endPos:integer; }count:integer): boolean;
+function errorHandler(startPos:integer; endPos:integer; count:integer): boolean;
     var
         error: byte;
     begin
-        if (count > 10) then
+        //if (count <> 0) and (endPos = startPos) then
+        if count > 10 then
             error := 1
-        else if (count < 1) then
+        else if count < 0 then
             error := 2
         else
             error := 0;
@@ -44,15 +45,28 @@ function errorHandler({startPos:integer; endPos:integer; }count:integer): boolea
         end;
     end;
 
+procedure incMod_p(var n: integer);
+    begin
+        if n >= 10 then n := 1 else inc(n);
+    end;
+
+function incMod_f(n: integer): integer;
+    begin
+        if n >= 10 then incMod_f := 1 else incMod_f := n+1;
+    end;
+
 function push(var queue:TQueue; val:integer): boolean;
     var
-        count: integer;
+        count, startPos, endPos: integer;
     begin
         count := queue[0];
-        if errorHandler(count+1) then begin
-            inc(count);
-            queue[0] := count;
-            queue[count] := val;
+        startPos := queue[-1];
+        endPos := queue[-2];
+
+        if errorHandler(startPos, incMod_f(endPos), count+1) then begin
+            inc(queue[0]); // увеличиваем count
+            queue[endPos] := val;
+            incMod_p(queue[-2]); // увеличиваем endPos
             push := true;
         end
         else
@@ -61,15 +75,16 @@ function push(var queue:TQueue; val:integer): boolean;
 
 function pop(var queue:TQueue; var val:integer): boolean;
     var
-        count, i: integer;
+        count, startPos, endPos: integer;
     begin
         count := queue[0];
-        if errorHandler(count) then begin
-            val := queue[1];
-            dec(count);
-            for i:=1 to count do
-                queue[i] := queue[i+1];
-            queue[0] := count;
+        startPos := queue[-1];
+        endPos := queue[-2];
+
+        if errorHandler(startPos, endPos, count-1) then begin
+            dec(queue[0]);
+            val := queue[startPos];
+            incMod_p(queue[-1]); // двигаем startPos
             pop := true;
         end
         else
@@ -78,11 +93,14 @@ function pop(var queue:TQueue; var val:integer): boolean;
 
 function top(var queue:TQueue; var val:integer): boolean;
     var
-        count: integer;
+        count, startPos, endPos: integer;
     begin
         count := queue[0];
-        if errorHandler(count) then begin
-            val := queue[1];
+        startPos := queue[-1];
+        endPos := queue[-2];
+
+        if errorHandler(startPos, endPos, count-1) then begin
+            val := queue[startPos];
             top := true;
         end
         else
@@ -91,15 +109,23 @@ function top(var queue:TQueue; var val:integer): boolean;
 
 procedure show(var queue:TQueue);
     var
-        i, count: integer;
+        i, ind, count, startPos, endPos: integer;
     begin
         count := queue[0];
-        if errorHandler(count) then begin
-            write('Состояние очереди: [');
-            for i:=1 to count-1 do begin
-                write(queue[i], ', ');
+        startPos := queue[-1];
+        endPos := queue[-2];
+        write('Состояние очереди: [');
+        if count = 0 then writeln(']')
+        else if errorHandler(startPos, endPos, count) then begin
+            {for i:=-2 to 0 do
+                write(queue[i], ':');}
+            for i:=startPos to startPos+count-2 do begin
+                ind := i;
+                if i > 10 then ind := i mod 10;
+                write(queue[ind], ', ');
             end;
-            writeln(queue[count], ']');
+            if endPos = 1 then endPos := 11;
+            writeln(queue[endPos-1], ']');
         end;
     end;
 
@@ -117,7 +143,7 @@ begin
     init(queue);
     writeln('*** zd02_1_ga.pas          12.02.2012  Гудулин А.О.');
     writeln('*** Программа тестирования функций push, pop, top');
-    writeln('***                        работы с очередью ');
+    writeln('***   работы с очередью ');
     inputStr := '';
     showHelp;
     while(true) do begin
