@@ -4,15 +4,16 @@
 uses uique_ga;
 var
     queue: TIQueue;
-    in_str: string;
+    inputStr: string;
     i: integer;
 
-procedure show_help;
+procedure showHelp;
     begin
         writeln('Список доступных команд:');
         writeln('push':8);
         writeln('pop':7);
         writeln('top':7);
+        writeln('show':8);
         writeln('help':8);
         writeln('exit':8);
     end;
@@ -21,42 +22,49 @@ begin
     queue.init;
     writeln('*** zd02_2_ga.pas          12.02.2012  Гудулин А.О.');
     writeln('*** Программа тестирования функций работы с очередью');
-    writeln('***                        push, pop, top');
-    in_str := '';
+    writeln('***   push, pop, top');
+    inputStr := '';
     writeln;
-    show_help;
+    showHelp;
     while(true) do begin
         writeln('Введите команду:');
         write('>>> ');
-        readln(in_str);
+        readln(inputStr);
         writeln;
-        case(in_str) of
+        case(inputStr) of
             'push': begin
                         writeln('** Введите новое значение (int):');
                         write('>>> ');
                         readln(i);
                         if queue.push(i) then
                             writeln('** Значение помещено в очередь');
+                            queue.show;
                         writeln;
                     end;
             'pop' : begin
                         if queue.pop(i) then begin
-                            writeln('** Значение, извлеченное из очереди:');
+                            write('** Значение, извлеченное из очереди: ');
                             writeln(i);
+                            if queue.len > 0 then queue.show;
                         end;
                         writeln;
                     end;
             'top' : begin
                         if queue.top(i) then begin
-                            writeln('** Значение, извлеченное из очереди:');
+                            write('** Значение, извлеченное из очереди: ');
                             writeln(i);
+                            queue.show;
                         end;
                         writeln;
                     end;
-            'help': show_help;
+            'show': begin
+                        queue.show;
+                        writeln;
+                    end;
+            'help': showHelp;
             'exit': exit;
             else
-                show_help;
+                showHelp;
         end;
     end;
 end.

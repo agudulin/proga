@@ -9,26 +9,27 @@ interface
         TCStack = Object
             len: integer;
             val: array[1..50] of char;
-            procedure init;
+            constructor init;
             function push(c:char): boolean;
             function pop(var c:char): boolean;
             function top(var c:char): boolean;
-            function error_handler(count:integer): boolean;
+            procedure show;
+            function errorHandler(count:integer): boolean;
         end;
 
 implementation
-    procedure TCStack.init;
-        var
-            i: integer;
+    constructor TCStack.init;
+        {var
+            i: integer;}
         begin
-            for i:=1 to 50 do
-                val[i] := 'a';
+            {for i:=1 to 50 do
+                val[i] := 'a';}
             len := 0;
         end;
 
     function TCStack.push(c:char): boolean;
         begin
-            if error_handler(len+1) then begin
+            if errorHandler(len+1) then begin
                 inc(len);
                 val[len] := c;
                 push := true;
@@ -39,7 +40,7 @@ implementation
     
     function TCStack.pop(var c:char): boolean;
         begin
-            if error_handler(len) then begin
+            if errorHandler(len) then begin
                 c := val[len];
                 dec(len);
                 pop := true;
@@ -50,15 +51,28 @@ implementation
 
     function TCStack.top(var c:char): boolean;
         begin
-            if error_handler(len) then begin
+            if errorHandler(len) then begin
                 c := val[len];
                 top := true;
             end
             else
                 top := false;
         end;
+
+    procedure TCStack.show;
+        var
+            i: integer;
+        begin
+            if errorHandler(len) then begin
+                write('Состояние стека: [');
+                for i:=1 to len-1 do begin
+                    write(val[i], ', ');
+                end;
+                writeln(val[len], ']');
+            end;
+        end;
     
-    function TCStack.error_handler(count:integer): boolean;
+    function TCStack.errorHandler(count:integer): boolean;
         var
             error: byte;
         begin
@@ -70,14 +84,14 @@ implementation
                 error := 0;
 
             case (error) of
-                0: error_handler := true;
+                0: errorHandler := true;
                 1: begin
                         writeln('Ошибка! Переполнение стека.');
-                        error_handler := false;
+                        errorHandler := false;
                     end;
                 2: begin
                         writeln('Ошибка! В стеке нет элементов.');
-                        error_handler := false;
+                        errorHandler := false;
                     end;
             end;
         end;
