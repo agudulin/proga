@@ -127,8 +127,8 @@ begin
         write('>>> ');
         readln(inputStr);
         writeln;
-        case(inputStr) of
-            'push': begin
+        if inputStr = 
+            'push' then begin
                         writeln('** Введите новое значение (int):');
                         write('>>> ');
                         readln(i);
@@ -137,31 +137,36 @@ begin
                             show(queue);
                         end;
                         writeln;
-                    end;
-            'pop' : begin
+                    end
+            else if inputStr = 
+            'pop' then begin
                         if pop(queue, i) then begin
                             write('** Значение, извлеченное из очереди: ');
                             writeln(i);
                             show(queue);
                         end;
                         writeln;
-                    end;
-            'top' : begin
+                    end
+            else if inputStr = 
+            'top' then begin
                         if top(queue, i) then begin
                             write('** Значение, извлеченное из очереди: ');
                             writeln(i);
                             show(queue);
                         end;
                         writeln;
-                    end;
-            'show': begin
+                    end
+            else if inputStr = 
+            'show' then begin
                         show(queue);
                         writeln;
-                    end;
-            'help': showHelp;
-            'exit': exit;
+                    end
+            else if inputStr = 
+            'help' then showHelp
+            else if inputStr = 
+            'exit' then exit
             else
                 showHelp;
-        end;
+        //end;
     end;
 end.

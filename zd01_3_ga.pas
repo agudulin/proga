@@ -32,8 +32,8 @@ begin
         write('>>> ');
         readln(inputStr);
         writeln;
-        case(inputStr) of
-            'push': begin
+        if inputStr = 
+            'push' then begin
                         writeln('** Введите новое значение (char):');
                         write('>>> ');
                         readln(i);
@@ -42,31 +42,36 @@ begin
                             stack.show;
                         end;
                         writeln;
-                    end;
-            'pop' : begin
+                    end
+            else if inputStr = 
+            'pop' then begin
                         if stack.pop(i) then begin
                             write('** Значение, извлеченное из стека: ');
                             writeln(i);
                             if stack.len > 0 then stack.show;
                         end;
                         writeln;
-                    end;
-            'top' : begin
+                    end
+            else if inputStr = 
+            'top' then begin
                         if stack.top(i) then begin
                             write('** Значение, извлеченное из стека: ');
                             writeln(i);
                             stack.show;
                         end;
                         writeln;
-                    end;
-            'show': begin
+                    end
+            else if inputStr = 
+            'show' then begin
                         stack.show;
                         writeln;
-                    end;
-            'help': showHelp;
-            'exit': exit;
+                    end
+            else if inputStr = 
+            'help' then showHelp
+            else if inputStr = 
+            'exit' then exit
             else
                 showHelp;
-        end;
+        //end;
     end;
 end.

@@ -121,40 +121,45 @@ begin
         write('>>> ');
         readln(inputStr);
         writeln;
-        case(inputStr) of
-            'push': begin
-                        writeln('** Введите новое значение (int):');
-                        write('>>> ');
-                        readln(i);
-                        if push(stack, i) then begin
-                            writeln('** Значение помещено в стек');
-                            show(stack);
-                        end;
-                        writeln;
-                    end;
-            'pop' : begin
-                        if pop(stack, i) then begin
-                            writeln('** Значение, извлеченное из стека:');
-                            writeln(i);
-                            if stack[0] > 0 then show(stack);
-                        end;
-                        writeln;
-                    end;
-            'top' : begin
-                        if top(stack, i) then begin
-                            writeln('** Значение, извлеченное из стека:');
-                            writeln(i);
-                        end;
-                        writeln;
-                    end;
-            'show': begin 
-                        show(stack);
-                        writeln;
-                    end;
-            'help': showHelp;
-            'exit': exit;
+        if inputStr = 
+            'push' then begin
+                writeln('** Введите новое значение (int):');
+                write('>>> ');
+                readln(i);
+                if push(stack, i) then begin
+                    writeln('** Значение помещено в стек');
+                    show(stack);
+                end;
+                writeln;
+            end
+            else if inputStr = 
+            'pop' then begin
+                if pop(stack, i) then begin
+                    write('** Значение, извлеченное из стека: ');
+                    writeln(i);
+                    if stack[0] > 0 then show(stack);
+                end;
+                writeln;
+            end
+            else if inputStr = 
+            'top' then begin
+                if top(stack, i) then begin
+                    write('** Значение, извлеченное из стека: ');
+                    writeln(i);
+                end;
+                writeln;
+            end
+            else if inputStr =
+            'show' then begin 
+                show(stack);
+                writeln;
+            end
+            else if inputStr =
+            'help' then showHelp
+            else if inputStr =
+            'exit' then exit
             else
                 showHelp;
-        end;
+        //end;
     end;
 end.
