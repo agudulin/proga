@@ -1,3 +1,5 @@
+//zd04_ga.pas       Гудулин А.О февраль 2012
+
 uses usstr_kv, ucst_ga;
 const
     outputStr: string = '';
@@ -43,6 +45,7 @@ begin
                     while opStack.pop(c) and isOpen1 do begin
                         if c = '(' then begin 
                             isOpen1 := false;
+                            mov2outputStr(' ');
                             break;
                         end;
                         mov2outputStr(c);
@@ -52,6 +55,7 @@ begin
                     while opStack.pop(c) and isOpen2 do begin
                         if c = '[' then begin 
                             isOpen2 := false;
+                            mov2outputStr(' ');
                             break;
                         end;
                         mov2outputStr(c);
@@ -61,6 +65,7 @@ begin
                     while opStack.pop(c) and isOpen3 do begin
                         if c = '{' then begin 
                             isOpen3 := false;
+                            mov2outputStr(' ');
                             break;
                         end;
                         mov2outputStr(c);
