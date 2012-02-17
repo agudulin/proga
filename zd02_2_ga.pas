@@ -39,7 +39,9 @@ begin
                 if queue.push(i) then begin
                     writeln('** Значение помещено в очередь');
                     queue.show;
-                end;
+                end
+                else
+                    writeln(errorMessage);
                 writeln;
             end
             else if inputStr = 
@@ -48,7 +50,9 @@ begin
                     write('** Значение, извлеченное из очереди: ');
                     writeln(i);
                     if queue.len > 0 then queue.show;
-                end;
+                end
+                else
+                    writeln(errorMessage);
                 writeln;
             end
             else if inputStr = 
@@ -57,7 +61,9 @@ begin
                     write('** Значение, извлеченное из очереди: ');
                     writeln(i);
                     queue.show;
-                end;
+                end
+                else
+                    writeln(errorMessage);
                 writeln;
             end
             else if inputStr = 

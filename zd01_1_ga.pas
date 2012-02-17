@@ -4,6 +4,9 @@
 type
     TStack = array[0..10] of integer;
 
+const
+    errorMessage:string = '';
+
 var
     stack: TStack;
     inputStr: string;
@@ -32,11 +35,11 @@ function errorHandler(count:integer): boolean;
         case (error) of
             0: errorHandler := true;
             1: begin
-                    writeln('Ошибка! Переполнение стека.');
+                    errorMessage := 'Ошибка! Переполнение стека.';
                     errorHandler := false;
                 end;
             2: begin
-                    writeln('Ошибка! В стеке нет элементов.');
+                    errorMessage := 'Ошибка! В стеке нет элементов.';
                     errorHandler := false;
                 end;
         end;
@@ -129,7 +132,9 @@ begin
                 if push(stack, i) then begin
                     writeln('** Значение помещено в стек');
                     show(stack);
-                end;
+                end
+                else
+                    writeln(errorMessage);
                 writeln;
             end
             else if inputStr = 
@@ -138,7 +143,9 @@ begin
                     write('** Значение, извлеченное из стека: ');
                     writeln(i);
                     if stack[0] > 0 then show(stack);
-                end;
+                end
+                else
+                    writeln(errorMessage);
                 writeln;
             end
             else if inputStr = 
@@ -146,7 +153,9 @@ begin
                 if top(stack, i) then begin
                     write('** Значение, извлеченное из стека: ');
                     writeln(i);
-                end;
+                end
+                else
+                    writeln(errorMessage);
                 writeln;
             end
             else if inputStr =

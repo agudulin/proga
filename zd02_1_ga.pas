@@ -4,6 +4,9 @@
 type
     TQueue = array[-2..10] of integer;
 
+const
+    errorMessage:string = '';
+
 var
     inputStr: string;
     queue: TQueue;
@@ -111,6 +114,7 @@ procedure showHelp;
         writeln('push':8);
         writeln('pop':7);
         writeln('top':7);
+        writeln('show':8);
         writeln('help':8);
         writeln('exit':8);
     end;
@@ -135,7 +139,9 @@ begin
                         if push(queue, i) then begin
                             writeln('** Значение помещено в очередь');
                             show(queue);
-                        end;
+                        end
+                        else
+                            writeln(errorMessage);
                         writeln;
                     end
             else if inputStr = 
@@ -144,7 +150,9 @@ begin
                             write('** Значение, извлеченное из очереди: ');
                             writeln(i);
                             show(queue);
-                        end;
+                        end
+                        else
+                            writeln(errorMessage);
                         writeln;
                     end
             else if inputStr = 
@@ -153,7 +161,9 @@ begin
                             write('** Значение, извлеченное из очереди: ');
                             writeln(i);
                             show(queue);
-                        end;
+                        end
+                        else
+                            writeln(errorMessage);
                         writeln;
                     end
             else if inputStr = 

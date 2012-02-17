@@ -10,7 +10,7 @@ interface
             len: integer;
             startPos: integer;
             endPos: integer;
-            val: array[1..50] of char;
+            val: array[1..10] of char;
             constructor init;
             function push(n:char): boolean;
             function pop(var n:char): boolean;
@@ -18,6 +18,9 @@ interface
             procedure show;
             function errorHandler(count:integer): boolean;
         end;
+
+    const
+        errorMessage:string = '';
     
     procedure incMod(var n: integer);
 
@@ -31,7 +34,7 @@ implementation
 
     procedure incMod(var n: integer);
         begin
-            if n >= 50 then n := 1 else inc(n);
+            if n >= 10 then n := 1 else inc(n);
         end;
 
     function TCQueue.push(n:char): boolean;
@@ -76,15 +79,15 @@ implementation
         if len = 0 then writeln(']')
         else if errorHandler(len) then begin
             for i:=startPos to startPos+len-2 do begin
-                if i > 50 then 
-                    write(val[i mod 50], ', ')
+                if i > 10 then 
+                    write(val[i mod 10], ', ')
                 else write(val[i], ', ');
             end;
 
             if endPos <> 1 then
                 writeln(val[endPos-1], ']')
             else
-                writeln(val[50], ']')
+                writeln(val[10], ']')
         end;
     end;
     

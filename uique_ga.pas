@@ -18,6 +18,9 @@ interface
             procedure show;
             function errorHandler(count:integer): boolean;
         end;
+        
+    const
+        errorMessage:string = '';
     
     procedure incMod(var n: integer);
 

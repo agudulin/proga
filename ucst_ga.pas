@@ -8,7 +8,7 @@ interface
     type
         TCStack = Object
             len: integer;
-            val: array[1..50] of char;
+            val: array[1..10] of char;
             constructor init;
             function push(c:char): boolean;
             function pop(var c:char): boolean;
@@ -16,6 +16,8 @@ interface
             procedure show;
             function errorHandler(count:integer): boolean;
         end;
+    const
+        errorMessage:string = '';
 
 implementation
     constructor TCStack.init;
@@ -76,7 +78,7 @@ implementation
         var
             error: byte;
         begin
-            if (count > 50) then
+            if (count > 10) then
                 error := 1
             else if (count < 1) then
                 error := 2

@@ -39,7 +39,9 @@ begin
                         if stack.push(i) then begin
                             writeln('** Значение помещено в стек');
                             stack.show;
-                        end;
+                        end
+                        else
+                            writeln(errorMessage);
                         writeln;
                     end
             else if inputStr = 
@@ -48,7 +50,9 @@ begin
                             write('** Значение, извлеченное из стека: ');
                             writeln(i);
                             if stack.len > 0 then stack.show;
-                        end;
+                        end
+                        else
+                            writeln(errorMessage);
                         writeln;
                     end
             else if inputStr = 
@@ -57,7 +61,9 @@ begin
                             write('** Значение, извлеченное из стека: ');
                             writeln(i);
                             stack.show;
-                        end;
+                        end
+                        else
+                            writeln(errorMessage);
                         writeln;
                     end
             else if inputStr = 

@@ -16,6 +16,8 @@ interface
             procedure show;
             function errorHandler(count:integer): boolean;
         end;
+    const
+        errorMessage:string = '';
 
 implementation
     constructor TIStack.init;
@@ -86,11 +88,11 @@ implementation
             case (error) of
                 0: errorHandler := true;
                 1: begin
-                        writeln('Ошибка! Переполнение стека.');
+                        errorMessage := 'Ошибка! Переполнение стека.';
                         errorHandler := false;
                     end;
                 2: begin
-                        writeln('Ошибка! В стеке нет элементов.');
+                        errorMessage := 'Ошибка! В стеке нет элементов.';
                         errorHandler := false;
                     end;
             end;
