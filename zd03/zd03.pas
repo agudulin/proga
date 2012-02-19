@@ -1,4 +1,4 @@
-uses usstr_kv, ucst;
+uses usstr_kv, ucst_ga;
 const
     outputStr: string = '';
 var
@@ -30,38 +30,48 @@ begin
         case curc of
             '(': opStack.push(curc);
             ')': begin
-                    c := opStack.pop;
-                    while (c <> '(') and (c <> #0) do begin
+                    while opStack.pop(c) and (c <> '(') do begin
                         mov2outputStr(c);
-                        c := opStack.pop;
                     end;
                 end;
             '+','-','*','/': begin
-                while prior(curc) <= prior(opStack.top) do
-                    mov2outputStr(opStack.pop);
-                if prior(curc) > prior(opStack.top) then
+                while opStack.top(c) and (prior(curc) <= prior(c)) do begin
+                    opStack.pop(c);
+                    mov2outputStr(c);
+                end;
+                
+                opStack.top(c);
+                if prior(curc) > prior(c) then
                     opStack.push(curc);
             end;
-            else begin
+            'a'..'z','A'..'Z','0'..'9':
                 mov2outputStr(curc);
+            else begin
+                PutMsgErr('недопустимый символ');
+                break;
             end;
         end;
     end;
     //opStack.show;
-    c := opStack.pop;
-    while c <> #0 do begin
+    while opStack.pop(c) do begin
         mov2outputStr(c);
-        c := opStack.pop;
     end;
-    stringAnalyzer := true;
+
+    if wasErr then stringAnalyzer := false
+    else stringAnalyzer := true;
 end;
 
 begin
+    writeln('*** zd03_ga.pas            Гудулин А.О. февраль 2012 г. ***');
+    writeln('*** Проверка синтаксической правильности выражения      ***');
+    writeln('***     и вывод на экран обратной польской записи       ***');
+    writeln;
     writeln('Введите выражение (Enter - выход): ');
     write('>>> ');
     readln(inputStr);
     writeln;
     while length(inputStr) <> 0 do begin
+        outputStr := '';
         if stringAnalyzer(inputStr) then begin
             writeln('Результат: ', outputStr);
             writeln;

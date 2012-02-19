@@ -108,10 +108,10 @@ begin
     readln(inputStr);
     writeln;
     while length(inputStr) <> 0 do begin
+        outputStr := '';
         if stringAnalyzer(inputStr) then begin
             writeln('Результат:', outputStr);
             writeln;
-            outputStr := '';
         end;
         writeln('Введите выражение (Enter - выход): ');
         write('>>> ');

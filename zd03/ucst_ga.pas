@@ -8,7 +8,7 @@ interface
     type
         TCStack = Object
             len: integer;
-            val: array[1..10] of char;
+            val: array[1..50] of char;
             constructor init;
             function push(c:char): boolean;
             function pop(var c:char): boolean;
