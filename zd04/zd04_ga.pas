@@ -25,6 +25,10 @@ begin
     while nxtc <> EOS do begin
         //write('output: ', outputStr, '  '); //DEBUG
         //opStack.show; //DEBUG
+        if errorMessage <> '' then begin
+            PutMsgErr(errorMessage);
+            break;
+        end;
         case curc of
             '(': begin
                 isOpen1 := true;

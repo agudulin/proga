@@ -24,6 +24,7 @@ implementation
         {var
             i: integer;}
         begin
+            errorMessage := '';
             {for i:=1 to 50 do
                 val[i] := 'a';}
             len := 0;
@@ -53,12 +54,12 @@ implementation
 
     function TCStack.top(var c:char): boolean;
         begin
-            if errorHandler(len) then begin
+            //if errorHandler(len) then begin
                 c := val[len];
                 top := true;
-            end
-            else
-                top := false;
+            //end
+            //else
+            //    top := false;
         end;
 
     procedure TCStack.show;

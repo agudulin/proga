@@ -31,7 +31,6 @@ begin
         //opStack.show;
         if errorMessage <> '' then begin
             PutMsgErr(errorMessage);
-            errorMessage := '';
             break;
         end;
         case curc of
