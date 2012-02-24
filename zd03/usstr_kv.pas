@@ -43,7 +43,7 @@ function nxtc:char;
 {--- вывод сообщения об ошибке с указанием стрелкой места ошибки --}
 procedure PutMsgErr(msg: string);
   begin wasErr:=true;
-    writeln('*** ОШИКА: ',msg);
+    writeln('*** ОШИБКА: ',msg);
     writeln(' ': iss, arrowDown ); writeln(' '+inputStr)
   end;
 

@@ -21,17 +21,33 @@ end;
 
 function stringAnalyzer(inputStr:string): boolean;
 var top, c: char;
+    leftOp: integer;
 begin
     initScanStr;
     opStack.init;
+    leftOp := 0;
     while nxtc <> EOS do begin
         //write('output: ', outputStr, '  ');
         //opStack.show;
+        if errorMessage <> '' then begin
+            PutMsgErr(errorMessage);
+            errorMessage := '';
+            break;
+        end;
         case curc of
-            '(': opStack.push(curc);
+            '(': begin
+                    inc(leftOp);
+                    opStack.push(curc);
+                end;
             ')': begin
-                    while opStack.pop(c) and (c <> '(') do begin
-                        mov2outputStr(c);
+                    if leftOp <> 0 then begin
+                        dec(leftOp);
+                        while opStack.pop(c) and (c <> '(') do
+                            mov2outputStr(c);
+                    end
+                    else begin
+                        PutMsgErr('некорректно поставлена скобка');
+                        break;
                     end;
                 end;
             '+','-','*','/': begin
@@ -69,9 +85,10 @@ begin
     writeln('Введите выражение (Enter - выход): ');
     write('>>> ');
     readln(inputStr);
-    writeln;
+    
     while length(inputStr) <> 0 do begin
         outputStr := '';
+        writeln;
         if stringAnalyzer(inputStr) then begin
             writeln('Результат: ', outputStr);
             writeln;
