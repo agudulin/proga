@@ -177,6 +177,7 @@ procedure get_val(var val:TIVal; var isValCorrect:boolean);
             i := -i;
           wasEqual := false;
           wasInt := true;
+          wasMinus := false;
         end
         else begin
           PutMsgErr('Ожидалось число!');
