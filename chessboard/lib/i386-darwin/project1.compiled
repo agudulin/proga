@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="/usr/local/bin/ppc386" Date="1325254654"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -gl -vewnhi -l &quot;-Fi/Users/sagod/Documents/СПбГУ/2 семестр/Прога/chessboard/lib/i386-darwin&quot; -Fu/Developer/lazarus/lcl/units/i386-darwin -Fu/Developer/lazarus/lcl/units/i386-darwin/carbon -Fu/Developer/lazarus/packager/units/i386-darwin &quot;-Fu/Users/sagod/Documents/СПбГУ/2 семестр/Прога/chessboard/&quot; -Fu. &quot;-FU/Users/sagod/Documents/СПбГУ/2 семестр/Прога/chessboard/lib/i386-darwin/&quot; -oproject1 -dLCL -dLCLcarbon project1.lpr"/>
+</CONFIG>

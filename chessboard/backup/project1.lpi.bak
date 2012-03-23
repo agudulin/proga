@@ -42,7 +42,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="25" Y="9"/>
+        <CursorPos X="20" Y="10"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -55,8 +55,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="9" Y="19"/>
+        <TopLine Value="155"/>
+        <CursorPos X="12" Y="167"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -83,7 +83,7 @@
         <UsageCount Value="10"/>
       </Unit4>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
+    <JumpHistory Count="4" HistoryIndex="3">
       <Position1>
         <Filename Value="project1.lpr"/>
         <Caret Line="20" Column="21" TopLine="1"/>
@@ -92,6 +92,14 @@
         <Filename Value="project1.lpr"/>
         <Caret Line="19" Column="6" TopLine="1"/>
       </Position2>
+      <Position3>
+        <Filename Value="chessboard.pas"/>
+        <Caret Line="168" Column="32" TopLine="148"/>
+      </Position3>
+      <Position4>
+        <Filename Value="chessboard.pas"/>
+        <Caret Line="29" Column="46" TopLine="17"/>
+      </Position4>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -116,6 +124,12 @@
     </Other>
   </CompilerOptions>
   <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Source Value="chessboard.pas"/>
+        <Line Value="168"/>
+      </Item1>
+    </BreakPoints>
     <Watches Count="1">
       <Item1>
         <Expression Value="step"/>
@@ -133,4 +147,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>

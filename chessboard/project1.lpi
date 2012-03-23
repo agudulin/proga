@@ -55,8 +55,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="186"/>
-        <CursorPos X="26" Y="172"/>
+        <TopLine Value="155"/>
+        <CursorPos X="30" Y="165"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -83,7 +83,7 @@
         <UsageCount Value="10"/>
       </Unit4>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
+    <JumpHistory Count="4" HistoryIndex="3">
       <Position1>
         <Filename Value="project1.lpr"/>
         <Caret Line="20" Column="21" TopLine="1"/>
@@ -92,6 +92,14 @@
         <Filename Value="project1.lpr"/>
         <Caret Line="19" Column="6" TopLine="1"/>
       </Position2>
+      <Position3>
+        <Filename Value="chessboard.pas"/>
+        <Caret Line="168" Column="32" TopLine="148"/>
+      </Position3>
+      <Position4>
+        <Filename Value="chessboard.pas"/>
+        <Caret Line="29" Column="46" TopLine="17"/>
+      </Position4>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -133,4 +141,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-</CONFIG>
+</CONFIG>

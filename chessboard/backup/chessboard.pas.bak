@@ -165,6 +165,7 @@ begin
            seq[seqc][2] := i;
            inc(seqc);
        end;
+       writeln('>>> SEQC >> ', seqc);
        dec(seqc);
        quicksort(seq, 1, seqc);
        {---------------------------}
@@ -218,4 +219,4 @@ begin
   Halt;
 end;
 
-end.
+end.
