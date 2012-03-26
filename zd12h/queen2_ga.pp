@@ -8,11 +8,29 @@
 { шахматной доски должна содержать ровно             }
 { одного ферзя.                                      }
 
-type TIBoard = array [1..20, 1..20] of integer;
 var N: integer;
 
 procedure solveQueenProblem(N:integer);
-var board: TIBoard;
+    type TIBoard = array [1..20, 1..20] of integer;
+    var board: TIBoard;
+
+    // @brief
+    //  вывод на экран текущего состояния 
+    //  шахматной доски
+    procedure printBoard;
+    var x,y: integer;
+    begin
+        for x:=1 to N do begin
+            for y:=1 to N do begin
+                if -1 = board[x, y] then
+                    write(' x')
+                else
+                    write(' .');
+            end;
+            writeln;
+        end;
+        writeln;
+    end;
 
     // @brief
     //  устанавливаем ферзя в клетку (i, j), поместим туда -1;
@@ -86,35 +104,18 @@ var board: TIBoard;
         tryToSetQueen := result;
     end;{tryToSetQueen}
 
-// @brief
-//  вывод на экран текущего состояния 
-//  шахматной доски
-procedure printBoard;
-var x,y: integer;
-begin
-    for x:=1 to N do begin
-        for y:=1 to N do begin
-            if -1 = board[x, y] then
-                write(' x')
-            else
-                write(' .');
-        end;
-        writeln;
-    end;
-end;
-
-// @brief
-//  заполнение нулями элементов N*N 
-//  шахматной доски
-procedure cleanBoard;
-var x,y: integer;
-begin
-    for x:=1 to N do begin
-        for y:=1 to N do begin
-            board[x, y] := 0;
+    // @brief
+    //  заполнение нулями элементов N*N 
+    //  шахматной доски
+    procedure cleanBoard;
+    var x,y: integer;
+    begin
+        for x:=1 to N do begin
+            for y:=1 to N do begin
+                board[x, y] := 0;
+            end;
         end;
     end;
-end;
 
 begin
     cleanBoard;
