@@ -149,7 +149,6 @@ begin
 end;{solveQueenProblem}
 
 begin
-    // TODO: сделать
     writeln;
     writeln('*** queen2_ga.pp    Гудулин А.О. март 2012 г.  *');
     writeln('***           Задача о восьми ферзях]          *');
