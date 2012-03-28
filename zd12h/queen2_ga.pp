@@ -8,11 +8,14 @@
 { шахматной доски должна содержать ровно             }
 { одного ферзя.                                      }
 
+uses crt;
+
 var N: integer;
 
 procedure solveQueenProblem(N:integer);
     type TIBoard = array [1..20, 1..20] of integer;
     var board: TIBoard;
+        solutionCount: int64;
 
     // @brief
     //  вывод на экран текущего состояния 
@@ -20,6 +23,13 @@ procedure solveQueenProblem(N:integer);
     procedure printBoard;
     var x,y: integer;
     begin
+        solutionCount := solutionCount + 1;
+
+        writeln('#', solutionCount, ' ');
+        for x:=1 to N*2+1 do
+            write('-');
+        writeln;
+        
         for x:=1 to N do begin
             for y:=1 to N do begin
                 if -1 = board[x, y] then
@@ -30,6 +40,18 @@ procedure solveQueenProblem(N:integer);
             writeln;
         end;
         writeln;
+        writeln('>> Enter (показать еще решение), Esc (прекратить)');
+    end;
+
+    // @brief:
+    //  функция ожидает нажатие любой клавиши пользователя
+    function pausePrinting: boolean;
+    var c: char;
+    begin
+        c := ReadKey;
+        if c = #0 then c := ReadKey;
+        if c = #27 then pausePrinting := false
+        else pausePrinting := true;
     end;
 
     // @brief
@@ -46,7 +68,7 @@ procedure solveQueenProblem(N:integer);
             diag := j - i + k; { \ }
             if (diag <= N) and (diag > 0) then
                 inc(board[k, diag]);
-            
+
             diag := j + i - k; { / }
             if (diag <= N) and (diag > 0) then
                 inc(board[k, diag]);
@@ -80,25 +102,22 @@ procedure solveQueenProblem(N:integer);
     //  пробуем установить ферзя на j-ое место
     //  i-ого столбца
     function tryToSetQueen(i:integer): boolean;
-    var result: boolean;
-        j: integer;
+    var j: integer;
+        result: boolean;
     begin
         result := false;
         for j:=1 to N do begin
             if 0 = board[i, j] then begin
                 setQueen(i, j);
-                // еси последний столбец - ОК, выходим
-                if i = N then
-                    result := true
-                // иначе пробуем поставить ферзя в следующем столбце
+                if i < N then
+                    result := tryToSetQueen(i+1)
                 else begin
-                    result := tryToSetQueen(i+1);
-                    if false = result then
-                        resetQueen(i, j);
+                    result := true;
+                    printBoard;
+                    if false = pausePrinting then exit;
                 end;
+                resetQueen(i, j);
             end;
-            if true = result then
-                break;
         end;
 
         tryToSetQueen := result;
@@ -119,23 +138,27 @@ procedure solveQueenProblem(N:integer);
 
 begin
     cleanBoard;
-    if false = tryToSetQueen(1) then
+    solutionCount := 0;
+    tryToSetQueen(1);
+
+    if 0 = solutionCount then
         writeln('>> На доске [', N, '*', N, '] ',
-                'невозможно расставить ферзей.')
-    else printBoard;
+                'невозможно расставить ферзей.');
+    //writeln('DEBUG: ', solutionCount);
 
 end;{solveQueenProblem}
 
 begin
     // TODO: сделать
     writeln;
-    writeln('*** queen1_ga.pp    Гудулин А.О. март 2012 г.   *');
-    writeln('***           Задача о восьми ферзях            *');
-    writeln('*** На шахматной доске размером NxN (0<N<=20),  *');
-    writeln('*** расставить N ферзей так, чтобы они          *');
-    writeln('*** не били друг друга.                         *');
-    writeln('*** Если найдено более одной расстановки - по   *');
-    writeln('*** запросу пользователя они выводятся на экран *');
+    writeln('*** queen2_ga.pp    Гудулин А.О. март 2012 г.  *');
+    writeln('***           Задача о восьми ферзях]          *');
+    writeln('*** На шахматной доске размером NxN (0<N<=20), *');
+    writeln('*** расставить N ферзей так, чтобы они         *');
+    writeln('*** не били друг друга.                        *');
+    writeln('*** Если найдено более одной расстановки       *');
+    writeln('*** по запросу пользователя они выводятся на   *');
+    writeln('*** экран                                      *');
     writeln;
 
     writeln('>> Введите N - размерность доски (0 - выход): ');
