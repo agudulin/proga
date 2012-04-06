@@ -16,8 +16,14 @@
 - zd09h  [fail]
 - zd10h  [fail]
 - zd11   [ok]
-- zd12h  [done, done]
-- zd13   [done]
+- zd12h  [ok, ok]
+- zd13   [ok]
+- zd14_1 [done]
+- zd14_2 [done]
+- zd14_3 [done]
+- zd15   [done]
+- zd16   []
+
 
 -----
 ok   = сделал, сдал, все ок

@@ -43,7 +43,7 @@ procedure solveQueenProblem(N:integer);
         writeln('>> Enter (показать еще решение), Esc (прекратить)');
     end;
 
-    // @brief:
+    // @brief
     //  функция ожидает нажатие любой клавиши пользователя
     function pausePrinting: boolean;
     var c: char;
