@@ -10,9 +10,9 @@ type TPItemList = ^TItemList;
      TWord  = string;
      TCount = word;
      TItemList = record
-         word:  TWord;      {Информационное поле}
-         count: TCount;     {Счетчик слов в тексте}
-         next:  TPItemList  {Указатель на следующий элемент}
+         word:  TWord;      {data}
+         count: TCount;     {words counter}
+         next:  TPItemList  {next item pointer}
      end;
      TList = TPItemList;
 
@@ -37,33 +37,21 @@ begin
     writeln;
 end;
 
-procedure addToEndOfList(var list: TList; val: TWord);
-var pNew, p: TPItemList;
+// @brief:
+//  dispose memory list object has
+procedure clearList(var list: TList);
+var p: TPItemList;
 begin
-    new(pNew);
-    pNew^.word := val;
-    pNew^.next := nil;
-    if nil = list then
-        list := pNew
-    else begin
+    while list <> nil do begin
         p := list;
-        while p^.next <> nil do
-            p := p^.next;
-        p^.next := pNew;
+        dispose(list);
+        list := p^.next;
     end;
-end;
-
-procedure addToBeginOfList(var list: TList; val: TWord);
-var pNew: TPItemList;
-begin
-    new(pNew);
-    pNew^.word := val;
-    pNew^.next := list;
-    list := pNew;
 end;
 
 // @brief:
 //  add item to list lexicographically
+//  and increment word count if duplicate
 procedure addToList(var list: TList; val: TWord);
 var pFirst, pSecond, pNew: TPItemList;
 begin
@@ -109,14 +97,16 @@ begin
     else lower_cp866 := lowercase(s);
 end;
 
-
+// @brief:
+//  read data from file string by string,
+//  get words separated by symbols from {separators}
+//  and add every word to linked list lexicographically
 procedure words_count(filein_name: string; var list: TList);
 var filein: text;
     str:    string;
     tmp:    TWord;
     i:      integer;
 begin
-    list := nil;
     assign(filein, filein_name);
     {$I+}
     try
@@ -146,7 +136,6 @@ begin
 end;
 
 begin
-    list := nil;
     writeln('*** lst5_ga.pp       Гудулин А.О. апрель 2012г.  ***');
     writeln('*** Построение связанного упорядоченного         ***');
     writeln('***   списка слов                                ***');
@@ -159,10 +148,11 @@ begin
     readln(filein_name);
 
     while length(filein_name) <> 0 do begin
-        
+        list := nil;
         words_count(filein_name, list);
-        
         printList(list);
+        clearList(list);
+
         writeln;
         writeln('Введите имя файла (Enter -конец): ');
         readln(filein_name);
