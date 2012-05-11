@@ -1,0 +1,11 @@
+{---- Высота дерева -------------------------}
+function htree(t: TTree):integer;
+  var h1,h2: integer;
+  begin
+    if t=nil then htree:=0
+    else begin
+      h1:=htree(t^.left); h2:=htree(t^.right);
+      if h2>h1 then h1:=h2;
+      htree:=h1+1
+    end
+  end;

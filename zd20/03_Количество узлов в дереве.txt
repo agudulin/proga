@@ -1,0 +1,6 @@
+{---- Количество узлов в дереве -------------}
+function countNodes(t: TTree):integer;
+  begin
+    if t=nil then countNodes:=0
+    else countNodes:=countNodes(t^.left)+countNodes(t^.right)+1
+  end;

@@ -1,0 +1,158 @@
+// treeact_xx_1.pp            Кузьменко В.Г.  апрель, 2008 г.
+//                       модифицировано:  апрель  2011,2012 гг.
+// Пример построения, левостороннего обхода  
+//  дерева поиска.  
+// Задания: Добавьте с соответствующим тестирова- 
+//       нием выполнение следующих функций:  
+//  1) определение высоты дерева (заглушка htree) - treeact_xx_2.pp
+//  2) определение количества узлов в дереве (заглушка countNodes) -treeact_xx_3.pp
+//  3) определение количества листьев в дереве (заглушка countLeaves) - treeact_xx_4.pp 
+//  3) обход дерева сверху вниз (заглушка walk_top_down)
+//  4) обход дерева снизу вверх (заглушка walk_bottom_up) - treeact_xx_5.pp 
+//  5) определение ширины дерева (заглушка wtree) - treeact_xx_6.pp 
+//     Замечания: а) при определении ширины дерева дерево должно обходиться
+//                   однократно!!! 
+//                б) после выполнения функции не должно быть увеличено количество
+//                   занятой памяти.
+//  6) вывод на экран дерева по уровням ("красивый" вывод дерева) 
+//     (модификация процедуры treeOut) - treeact_xx_7.pp 
+
+uses crt;
+
+type TInfo    = integer;
+     TRefNode = ^TNode;
+        TNode =
+          record
+            s: TInfo;
+            left,right: TRefNode
+          end;
+     TTree    = TRefNode;
+
+procedure intree(var t: TTree; a: TInfo);
+  begin
+    if t=nil then
+      begin  new(t);
+        t^.s:=a; t^.left:=nil; t^.right:=nil;
+      end
+    else
+      if  a< t^.s then intree(t^.left,a)
+      else
+      if a > t^.s then intree(t^.right,a)
+  end;
+
+{---- для treeact_xx_2.pp: Определение высоты дерева ---}
+function htree(t: TTree):integer;
+  var h1,h2: integer;
+  begin
+    if t=nil then htree:=0
+    else begin
+      h1:=htree(t^.left); h2:=htree(t^.right);
+      if h2>h1 then h1:=h2;
+      htree:=h1+1
+    end
+  end;
+
+{---- для treeact_xx_3.pp: Количество узлов в дереве ---}
+function countNodes(t: TTree):integer;
+  begin {Это заглушка}
+    countNodes:=0
+  end;
+  
+{---- для treeact_xx_4.pp: Количество листьев в дереве -}
+function countLeaves(t: TTree):integer;
+  begin {Это заглушка}
+    countLeaves:=0;
+  end {countLeaves};  
+
+{---- Обход дерева слева -----------}
+procedure walk_lft(t: TTree);
+begin
+  if t<>nil then
+    begin
+      walk_lft(t^.left);
+      write(t^.s,' ');
+      walk_lft(t^.right);
+    end
+end;
+
+{---- для treeact_xx_5.pp: Обход дерева сверху вниз ---}
+procedure walk_top_down(t: TTree);
+begin {Это заглушка}
+end;
+
+{---- для treeact_xx_5.pp: Обход дерева снизу вверх ---}
+procedure walk_bottom_up(t: TTree);
+begin {Это заглушка}
+end;
+
+{---- для treeact_xx_7.pp: Вывод дерева на экран ------}
+procedure treeOut(t:TTree);
+  begin
+    window(1,1,79,13);
+    ClrScr;
+    walk_lft(t);
+    writeln
+  end;
+
+{---- для treeact_xx_6.pp: Ширина дерева --------------}
+function wtree(t:TTree):integer;
+  {-------------------------------------}
+  begin  {Это заглушка}
+    wtree:=0
+  end {wtree};
+
+{---- Диалог генерации дерева поиска -----------}
+procedure gentree(var t: TTree);
+  var a: integer;
+  begin
+    writeln;
+    writeln('*** treeact_xx_1.pp     Кузьменко ВГ, апрель 2008,2012 гг');
+    writeln('*** Создаем дерево поиска, последовательно');
+    writeln('***  помещая в него вводимые целые значе-');
+    writeln('***  ния отличные от 0 (0-конец ввода!)  ');
+    writeln;
+    write('Вводим целые значения (0-конец): ');
+    read(a);
+    while a<>0 do
+      begin  intree(t,a);
+        treeOut(t);
+        window(1,14,79,24); ClrScr;
+        gotoXY(1,1);
+        writeln;
+        writeln('*** treeact_xx_1.pp     Кузьменко ВГ, апрель 2008,2012 гг');
+        writeln('*** Создаем дерево поиска, последовательно');
+        writeln('***  помещая в него вводимые целые значе-');
+        writeln('***  ния отличные от 0 (0-конец ввода!)  ');
+        writeln;
+        write('Вводим целые значения (0-конец): ');
+        read(a);
+      end;
+    writeln('! Дерево создано !');
+    readln;
+    treeOut(t)
+  end;
+
+var tree: TRefNode;
+      ok: byte;
+
+begin tree:=nil; ok:=1;
+  ClrScr;
+  while ok<>0 do begin
+    window(1,14,79,24); ClrScr;
+    gotoXY(1,1);
+    gentree(tree);
+    writeln;
+    window(1,14,79,24); ClrScr;
+    gotoXY(1,1);
+    writeln('Выше -полученное дерево!');
+    writeln('Высота дерева: ',htree(tree));
+    writeln('Количество узлов в дереве: ',countNodes(tree));
+    writeln('Количество листьев в дереве: ',countLeaves(tree));
+    write('Обошли слева направо: '); walk_lft(tree); writeln;
+    write('Обошли сверху вниз: '); walk_top_down(tree); writeln;
+    write('Обошли снизу вверх: '); walk_bottom_up(tree); writeln;
+    writeln('Ширина дерева: ',wtree(tree));
+    write('Введите (1 -продолжим; 0 -закончили): ');
+    readln(ok);
+  end;
+end.

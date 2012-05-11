@@ -1,0 +1,8 @@
+{---- Количество листьев в дереве -----------}
+function countLeaves(t: TTree):integer;
+  begin
+    countLeaves:=0;
+    if t<>nil then
+      if (t^.left=nil) and (t^.right=nil) then countLeaves:=1
+      else countLeaves:=countLeaves(t^.left)+countLeaves(t^.right)
+  end {countLeaves};
