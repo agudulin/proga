@@ -5,16 +5,7 @@ class MainClass
 {
 	public static void Main (string[] args)
 	{
-		int[] array1 = {3, 5, 7, 8, 10, 70, 5};
-		int[] array2 = {7, 8, 11, 3, 11, 7};
-		UniqueIntegersSet uiset1 = new UniqueIntegersSet(array1);
-		UniqueIntegersSet uiset2 = new UniqueIntegersSet(array2);
-
-		Console.WriteLine(uiset1);
-		Console.WriteLine(uiset2);
-		Console.WriteLine(uiset1 + uiset2);
-		Console.WriteLine(uiset1);
-		Console.WriteLine(uiset1 * uiset2);
+		TestUniqueIntegersSet test = new TestUniqueIntegersSet();
 	}
 }
 
@@ -42,6 +33,9 @@ class UniqueIntegersSet
 		}
 	}
 
+	/*
+	 * Add integer to the set
+	 */
 	public bool AddItem (int item)
 	{
 		if (item < 0 || item > 800000) {
@@ -70,6 +64,17 @@ class UniqueIntegersSet
 		}
 	}
 
+	/*
+	 * Add array of integers to the set
+	 */
+	public bool AddItem (int[] items)
+	{
+		foreach (int item in items) {
+			AddItem(item);
+		}
+		return true;
+	}
+	
 	public static UniqueIntegersSet operator + (UniqueIntegersSet uiSet1, UniqueIntegersSet uiSet2)
 	{
 		UniqueIntegersSet uiSetUnion = new UniqueIntegersSet();
@@ -96,7 +101,7 @@ class UniqueIntegersSet
 
 	public bool Contains(int item)
 	{
-		return (this.hash.Contains(item)) ? true : false;
+		return this.hash.Contains(item);
 	}
 
 	public override string ToString()
@@ -108,5 +113,131 @@ class UniqueIntegersSet
 			output += String.Format (format, this.setOfItems[i]);
 		}
 		return output + "]";
+	}
+}
+
+/*
+ * Test for UniqueIntegersSet class
+ */
+class TestUniqueIntegersSet
+{
+	static Random r = new Random();
+
+	public TestUniqueIntegersSet ()
+	{
+		WelcomeMessage();
+	}
+
+	public static void WelcomeMessage ()
+	{
+		Console.WriteLine ("zd04_ga.cs\t\t Гудулин А.О. 16.09.2012");
+		Console.WriteLine ("Класс для представления множества неповторяющихся целых чисел.");
+		Console.WriteLine (" Элементы множества - целые числа в диапазоне от 0 до 800000.");
+		Console.WriteLine ("     Максимальный размер множества = 200000 элементов.");
+		Console.WriteLine ();
+
+		while (true) {
+			PrintMenu ();
+			Console.WriteLine ("\n\nEnter - назад в меню");
+			Console.ReadLine ();
+			Console.Clear ();
+		}
+	}
+
+	public static void PrintMenu ()
+	{
+		Console.WriteLine ("1. Объединение множеств");
+		Console.WriteLine ("2. Пересечение множеств");
+		Console.WriteLine ("3. Проверка принадлежности элемента множеству");
+		Console.WriteLine ("4. Создание объекта из массива");
+		Console.WriteLine ("5. Включение элемента (или массива) в множество");
+		Console.WriteLine ("6. Вывод множества на экран или в файл");
+		Console.WriteLine ("7. Выход");
+
+		Console.Write ("\nВведите [1-7]: ");
+		int i = int.Parse (Console.ReadLine());
+
+		Console.Clear();
+
+		UniqueIntegersSet uiset1 = new UniqueIntegersSet(RandomArray(10, 30));
+		UniqueIntegersSet uiset2 = new UniqueIntegersSet(RandomArray(10, 25));
+
+		switch (i)
+		{
+			case 1:
+				Console.WriteLine("-- Объединение множеств --\n");
+				Console.WriteLine("Set1: {0}", uiset1);
+				Console.WriteLine("Set2: {0}", uiset2);
+				Console.WriteLine("\nОбъединение: {0}", uiset1 + uiset2);
+				break;
+			case 2:
+				Console.WriteLine("-- Пересечение множеств --\n");
+				Console.WriteLine("Set1: {0}", uiset1);
+				Console.WriteLine("Set2: {0}", uiset2);
+				Console.WriteLine("\nОбъединение: {0}", uiset1 * uiset2);
+				break;
+			case 3:
+				Console.WriteLine("-- Проверка принадлежности элемента множеству --\n");
+
+				while(true){
+					UniqueIntegersSet uiset = new UniqueIntegersSet (RandomArray(10, 40));
+					Console.WriteLine("Set: {0}", uiset);
+					Console.Write("Введите элемент для проверки (-1: закончить): ");
+					//TODO: add handler to parse input data
+					int item = int.Parse (Console.ReadLine());
+					if (item == -1) {
+						break;
+					}
+
+					if (uiset.Contains(item)) {
+						Console.WriteLine (">> True: {0} есть в Set.\n", item);
+					} else {
+						Console.WriteLine (">> False: {0} отсутствует в Set.\n", item);
+					}
+				}
+
+				break;
+			case 4:
+				Console.WriteLine("-- Создание объекта из массива --\n");
+				int[] array = RandomArray(10, 40);
+				Console.Write("Array: <");
+				for (int j = 0; j < array.Length-1; ++j) {
+					Console.Write ("{0}, ", array[j]);
+				}
+				Console.WriteLine("{0}>", array[array.Length-1]);
+				Console.WriteLine("Set: {0}", new UniqueIntegersSet(array));
+				break;
+			case 5:
+				Console.WriteLine("-- Включение элемента (или массива) в множество --\n");
+				uiset1.AddItem(311);
+				uiset1.AddItem(new int[] {411, 511});
+				break;
+			case 6:
+				Console.WriteLine("-- Вывод множества на экран или в файл --\n");
+				Console.WriteLine(uiset1);
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"/tmp/uitest.txt", false))
+				{
+					file.WriteLine(uiset1);
+				}
+				break;
+			case 7:
+				Console.WriteLine("Всего хорошего! Жмите Enter для выхода.");
+//				Console.ReadLine();
+				Environment.Exit(0);
+				break;
+
+			default:
+				Console.WriteLine("Вы ввели неверный код. Вернитесь назад и попробуйте еще раз ;)");
+				break;
+		}
+	}
+
+	public static int[] RandomArray (int count, int endItem, int startItem = 0)
+	{
+		int[] array = new int[count];
+		for (int i = 0; i < count; ++i) {
+			array[i] = startItem + r.Next (endItem-startItem);
+		}
+		return array;
 	}
 }
