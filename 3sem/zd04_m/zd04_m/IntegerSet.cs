@@ -9,6 +9,15 @@ namespace zd04_m
 		public List<int> setOfItems = new List<int>();
 		private HashSet<int> hash = new HashSet<int>();
 		public ulong controlSum = 0;
+
+		/*
+		 * Add integer to the set
+		 * You can override this method
+		 */
+		public virtual void AddItemToSet (int item)
+		{
+			this.setOfItems.Add(item);
+		}
 		
 		/*
          * Add integer to the set
@@ -25,7 +34,7 @@ namespace zd04_m
 			}
 			if (this.hash.Add(item))
 			{
-				this.setOfItems.Add(item);
+				AddItemToSet(item);
 				this.controlSum += (ulong)item;
 				return true;
 			}

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zd04_m", "zd04_m\zd04_m.csproj", "{505A663B-13AF-46E2-A698-C129A7058B87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zd04_m", "zd04_m\zd04_m.csproj", "{D16B0473-71A5-4B90-9696-8547E82E90C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,12 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{505A663B-13AF-46E2-A698-C129A7058B87}.Debug|x86.ActiveCfg = Debug|x86
-		{505A663B-13AF-46E2-A698-C129A7058B87}.Debug|x86.Build.0 = Debug|x86
-		{505A663B-13AF-46E2-A698-C129A7058B87}.Release|x86.ActiveCfg = Release|x86
-		{505A663B-13AF-46E2-A698-C129A7058B87}.Release|x86.Build.0 = Release|x86
+		{D16B0473-71A5-4B90-9696-8547E82E90C8}.Debug|x86.ActiveCfg = Debug|x86
+		{D16B0473-71A5-4B90-9696-8547E82E90C8}.Debug|x86.Build.0 = Debug|x86
+		{D16B0473-71A5-4B90-9696-8547E82E90C8}.Release|x86.ActiveCfg = Release|x86
+		{D16B0473-71A5-4B90-9696-8547E82E90C8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = zd04_m\zd04_m.csproj
 	EndGlobalSection
 EndGlobal

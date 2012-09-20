@@ -26,7 +26,7 @@ namespace zd04_m
 		
 		public void Start()
 		{
-			Console.WriteLine("zd04m_ga.cs\t\t Гудулин А.О. 19.09.2012");
+			Console.WriteLine("zd04m_ga.cs\t\t Гудулин А.О. 20.09.2012");
 			Console.WriteLine("Тестирование процедур пересечения (объединения) целочисленных множеств.");
 			Console.WriteLine();
 			
@@ -43,9 +43,8 @@ namespace zd04_m
 		{
 			Console.WriteLine("1. Пересечение множеств");
 			Console.WriteLine("2. Объединение множеств");
-			Console.WriteLine("3. Выход");
 			
-			Console.Write("\nВведите [1-3]: ");
+			Console.Write("\nВведите [1-2] (Enter - выход): ");
 			int i;
 			if (!int.TryParse(Console.ReadLine(), out i))
 			{
@@ -85,9 +84,6 @@ namespace zd04_m
 				Console.WriteLine("\nОбъединение: {0}", uiset1 + uiset2);
 				stopwatch.Stop();
 				Console.WriteLine("Время на объединение: {0}ms", stopwatch.ElapsedMilliseconds);
-				break;
-			case 3:
-				ExitTestSystem(0);
 				break;
 				
 			default:
