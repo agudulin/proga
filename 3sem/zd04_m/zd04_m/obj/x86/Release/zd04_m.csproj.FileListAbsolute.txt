@@ -1,5 +1,0 @@
-C:\Users\m11gao\Documents\Visual Studio 2010\Projects\zd04_m\zd04_m\bin\Release\zd04_m.exe
-C:\Users\m11gao\Documents\Visual Studio 2010\Projects\zd04_m\zd04_m\bin\Release\zd04_m.pdb
-C:\Users\m11gao\Documents\Visual Studio 2010\Projects\zd04_m\zd04_m\obj\x86\Release\ResolveAssemblyReference.cache
-C:\Users\m11gao\Documents\Visual Studio 2010\Projects\zd04_m\zd04_m\obj\x86\Release\zd04_m.exe
-C:\Users\m11gao\Documents\Visual Studio 2010\Projects\zd04_m\zd04_m\obj\x86\Release\zd04_m.pdb
