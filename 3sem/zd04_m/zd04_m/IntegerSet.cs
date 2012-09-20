@@ -90,6 +90,8 @@ namespace zd04_m
 		
 		/*
          * Reading from .set file
+         * First 4 bytes - count of items in file
+         * Every new 4 bytes - an integer item
          */
 		public void ReadFromFile(string fileName)
 		{

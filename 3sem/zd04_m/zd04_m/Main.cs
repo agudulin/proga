@@ -53,35 +53,62 @@ namespace zd04_m
 			
 			Console.Clear();
 			
-			Console.WriteLine("Получаем множество x из файла (введите имя файла): ");
+			Console.WriteLine("Получаем множество Set1 (Set1_ordered) из файла (введите имя файла): ");
 			string fileName = Console.ReadLine();
 			UniqueIntegersSet uiset1 = new UniqueIntegersSet();
+			OrderedUniqueIntegersSet uiset1Ordered = new OrderedUniqueIntegersSet();
 			uiset1.ReadFromFile(fileName);
+			uiset1Ordered.ReadFromFile(fileName);
 			
-			Console.WriteLine("Получаем множество y из файла (введите имя файла): ");
+			Console.WriteLine("Получаем множество Set2 (Set2_ordered) из файла (введите имя файла): ");
 			fileName = Console.ReadLine();
 			UniqueIntegersSet uiset2 = new UniqueIntegersSet();
+			OrderedUniqueIntegersSet uiset2Ordered = new OrderedUniqueIntegersSet();
 			uiset2.ReadFromFile(fileName);
+			uiset2Ordered.ReadFromFile(fileName);
 			
 			switch (i)
 			{
 			case 1: 
-				Console.WriteLine("-- Пересечение множеств --\n");
+				Console.WriteLine("\n-- Пересечение множеств --\n");
 				Console.WriteLine("Set1: {0}", uiset1);
 				Console.WriteLine("Set2: {0}", uiset2);
+
 				Stopwatch stopwatch = new Stopwatch();
 				stopwatch.Start();
 				Console.WriteLine("\nПересечение: {0}", uiset1 * uiset2);
 				stopwatch.Stop();
 				Console.WriteLine("Время на пересечение: {0}ms", stopwatch.ElapsedMilliseconds);
+
+				Console.WriteLine("\n-- Пересечение упорядоченных множеств --\n");
+				Console.WriteLine("Set1_ordered: {0}", uiset1Ordered);
+				Console.WriteLine("Set2_ordered: {0}", uiset2Ordered);
+				
+				stopwatch = new Stopwatch();
+				stopwatch.Start();
+				Console.WriteLine("\nПересечение: {0}", uiset1Ordered * uiset2Ordered);
+				stopwatch.Stop();
+				Console.WriteLine("Время на пересечение: {0}ms", stopwatch.ElapsedMilliseconds);
+
 				break;
 			case 2:
-				Console.WriteLine("-- Объединение множеств --\n");
+				Console.WriteLine("\n-- Объединение множеств --\n");
 				Console.WriteLine("Set1: {0}", uiset1);
 				Console.WriteLine("Set2: {0}", uiset2);
+				
 				stopwatch = new Stopwatch();
 				stopwatch.Start();
 				Console.WriteLine("\nОбъединение: {0}", uiset1 + uiset2);
+				stopwatch.Stop();
+				Console.WriteLine("Время на объединение: {0}ms", stopwatch.ElapsedMilliseconds);
+				
+				Console.WriteLine("\n-- Объединение упорядоченных множеств --\n");
+				Console.WriteLine("Set1_ordered: {0}", uiset1Ordered);
+				Console.WriteLine("Set2_ordered: {0}", uiset2Ordered);
+				
+				stopwatch = new Stopwatch();
+				stopwatch.Start();
+				Console.WriteLine("\nОбъединение: {0}", uiset1Ordered + uiset2Ordered);
 				stopwatch.Stop();
 				Console.WriteLine("Время на объединение: {0}ms", stopwatch.ElapsedMilliseconds);
 				break;
