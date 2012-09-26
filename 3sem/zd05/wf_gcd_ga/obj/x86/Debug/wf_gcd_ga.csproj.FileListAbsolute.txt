@@ -1,0 +1,10 @@
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.about_wf.resources
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.main_wf.resources
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.Properties.Resources.resources
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\bin\Debug\wf_gcd_ga.exe
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\bin\Debug\wf_gcd_ga.pdb
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.exe
+C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.pdb

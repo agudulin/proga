@@ -2,7 +2,7 @@
 
 ###3 семестр, 241 группа
 
-- zd03   [cw: done]
+- zd03   [cw: OK]
 - zd04_1 [hw: done]
 - zd04_2 [hw: ]
 - zd04_m [cw: done]
