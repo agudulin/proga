@@ -277,6 +277,7 @@
             this.saveToFileButton1.TabIndex = 20;
             this.saveToFileButton1.Text = "Save";
             this.saveToFileButton1.UseVisualStyleBackColor = true;
+            this.saveToFileButton1.Click += new System.EventHandler(this.saveToFileButton1_Click);
             // 
             // pathToSave1
             // 

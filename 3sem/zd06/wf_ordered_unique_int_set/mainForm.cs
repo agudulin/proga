@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace wf_ordered_unique_int_set
@@ -62,9 +57,28 @@ namespace wf_ordered_unique_int_set
             logger.Text = "Success! Set_1 was created.";
         }
 
+        /*
+         * Save a set to the file
+         */
         private void saveToFileButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string path = pathToSave.Text;
+                if (path == "")
+                {
+                    logger.Text = "Warning! Empty file name.";
+                }
+                else
+                {
+                    Global.set.SaveToFile(path);
+                    logger.Text = String.Format("Success! Set_1 was saved to the file {0}", path);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                logger.Text = "Error! Can't save the set to file."; // + ex.ToString();
+            }
         }
 
         private void loadFromFileButton_Click(object sender, EventArgs e)
@@ -97,6 +111,27 @@ namespace wf_ordered_unique_int_set
             Global.set1 = new OrderedUniqueIntegersSet(RandomArray(count, 799999));
             tbToPrint1.Text = Global.set1.ToString();
             logger.Text = "Success! Set_2 was created.";
+        }
+
+        private void saveToFileButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = pathToSave1.Text;
+                if (path == "")
+                {
+                    logger.Text = "Warning! Empty file name.";
+                }
+                else
+                {
+                    Global.set1.SaveToFile(path);
+                    logger.Text = String.Format("Success! Set_1 was saved to the file {0}", path);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                logger.Text = "Error! Can't save the set to file."; // + ex.ToString();
+            }
         }
 
         private void loadFromFileButton1_Click(object sender, EventArgs e)

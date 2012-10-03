@@ -120,5 +120,36 @@ namespace wf_ordered_unique_int_set
 				//Console.WriteLine(ex.Message);
 			}
 		}
-	}
+
+        /*
+         * Save Set to file
+         * First 4 bytes - count of items in file
+         * Every new 4 bytes - an integer item
+         */
+        public void SaveToFile(string filename)
+        {
+            int count = this.setOfItems.Count;
+            byte[] buffer = new byte[4];
+            try
+            {
+
+                using (System.IO.FileStream fs = new System.IO.FileStream(filename,
+                                                                          System.IO.FileMode.Create,
+                                                                          System.IO.FileAccess.Write))
+                {
+                    buffer = BitConverter.GetBytes(count);
+                    fs.Write(buffer, 0, buffer.Length);
+                    for (int i = 0; i < count; ++i)
+                    {
+                        buffer = BitConverter.GetBytes(this.setOfItems[i]);
+                        fs.Write(buffer, 0, buffer.Length);
+                    }
+                    fs.Close();
+                }
+            }
+            catch (System.Exception ex)
+            {
+            }
+        }
+    }
 }
