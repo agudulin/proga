@@ -1,0 +1,20 @@
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\bin\Debug\wf_ordered_unique_int_set.exe.config
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\bin\Debug\wf_ordered_unique_int_set.exe
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\bin\Debug\wf_ordered_unique_int_set.pdb
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.csprojResolveAssemblyReference.cache
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.Properties.Resources.resources
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.csproj.GenerateResource.Cache
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.exe
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.pdb
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.aboutForm.resources
+C:\Users\sagod\Documents\Visual Studio 11\Projects\wf_ordered_unique_int_set\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.mainForm.resources
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\bin\Debug\wf_ordered_unique_int_set.exe.config
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.exe
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.pdb
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\bin\Debug\wf_ordered_unique_int_set.exe
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\bin\Debug\wf_ordered_unique_int_set.pdb
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.csprojResolveAssemblyReference.cache
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.aboutForm.resources
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.mainForm.resources
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.Properties.Resources.resources
+\\VBOXSVR\3sem\zd06\wf_ordered_unique_int_set\obj\Debug\wf_ordered_unique_int_set.csproj.GenerateResource.Cache

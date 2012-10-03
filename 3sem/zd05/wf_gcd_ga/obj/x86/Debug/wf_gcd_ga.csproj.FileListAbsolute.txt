@@ -8,3 +8,12 @@ C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\bin\Debug\wf_gcd_ga.e
 C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\bin\Debug\wf_gcd_ga.pdb
 C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.exe
 C:\Users\m11gao\Documents\GitHub\proga\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.pdb
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.exe
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.pdb
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\bin\Debug\wf_gcd_ga.exe
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\bin\Debug\wf_gcd_ga.pdb
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.csprojResolveAssemblyReference.cache
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.about_wf.resources
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.main_wf.resources
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.Properties.Resources.resources
+\\VBOXSVR\3sem\zd05\wf_gcd_ga\obj\x86\Debug\wf_gcd_ga.csproj.GenerateResource.Cache
