@@ -7,6 +7,8 @@
 - zd04_2 [hw: ]
 - zd04_m [cw: done]
 - zd04_m [hw: done, hw: done]
+- zd05   [cw: done]
+- zd06   [hw: done]
 
 
 ###матмех матобес, 2 семестр, 141 группа
