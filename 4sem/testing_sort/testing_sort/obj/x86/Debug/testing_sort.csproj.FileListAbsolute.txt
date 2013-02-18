@@ -1,0 +1,9 @@
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\bin\Debug\testing_sort.exe
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\bin\Debug\testing_sort.pdb
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.MainForm.resources
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.Properties.Resources.resources
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.csproj.GenerateResource.Cache
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.exe
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.pdb
+c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.AboutForm.resources
+C:\Users\Alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.csprojResolveAssemblyReference.cache
