@@ -7,3 +7,12 @@ c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_so
 c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.pdb
 c:\users\alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.AboutForm.resources
 C:\Users\Alexander\documents\visual studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.csprojResolveAssemblyReference.cache
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.exe
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.pdb
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\bin\Debug\testing_sort.exe
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\bin\Debug\testing_sort.pdb
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.csprojResolveAssemblyReference.cache
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.AboutForm.resources
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.MainForm.resources
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.Properties.Resources.resources
+C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.csproj.GenerateResource.Cache

@@ -182,9 +182,7 @@
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(513, 387);
             this.richTextBox2.TabIndex = 9;
-            this.richTextBox2.Text = "v0.1 (17.02.2013)\n+ Массив int[] создается из бинарного файла\n+ Реализован алгори" +
-                "тм сортировки QuickSort\n+ Определяется время работы сортировки\n+ Ведется история" +
-                " операция пользователя";
+            this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
             // AboutForm
             // 
