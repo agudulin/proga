@@ -83,7 +83,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "0.1";
+            this.label4.Text = "0.2";
             // 
             // label5
             // 
@@ -188,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 449);
+            this.ClientSize = new System.Drawing.Size(560, 450);
             this.Controls.Add(this.tabControl1);
             this.MaximumSize = new System.Drawing.Size(576, 488);
             this.MinimumSize = new System.Drawing.Size(576, 488);

@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**
+ * Автор: Гудулин Александр
+ * Дата:  20.02.2013
+ * 
+ * Описание:
+ * Форма с информацией об авторе и истории изменений приложения.
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

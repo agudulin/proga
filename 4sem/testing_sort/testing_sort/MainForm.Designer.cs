@@ -31,18 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.saveToFile = new System.Windows.Forms.Button();
             this.clearHistoryButton = new System.Windows.Forms.Button();
             this.historyTextBox = new System.Windows.Forms.RichTextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.sortingTypesList = new System.Windows.Forms.ListBox();
-            this.chooseButton = new System.Windows.Forms.Button();
             this.arrayNameToChooseTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.aboutMenuButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToFile_list = new System.Windows.Forms.Button();
             this.clearHistoryButton_list = new System.Windows.Forms.Button();
             this.historyTextBox_list = new System.Windows.Forms.RichTextBox();
             this.submitButton_list = new System.Windows.Forms.Button();
@@ -51,8 +49,10 @@
             this.arrayNameToChooseTextBox_list = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.saveToFile = new System.Windows.Forms.Button();
-            this.saveToFile_list = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.aboutMenuButton = new System.Windows.Forms.ToolStripButton();
+            this.chooseButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -61,9 +61,9 @@
             // 
             // tabControl
             // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Location = new System.Drawing.Point(12, 28);
@@ -74,12 +74,12 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chooseButton);
             this.tabPage1.Controls.Add(this.saveToFile);
             this.tabPage1.Controls.Add(this.clearHistoryButton);
             this.tabPage1.Controls.Add(this.historyTextBox);
             this.tabPage1.Controls.Add(this.submitButton);
             this.tabPage1.Controls.Add(this.sortingTypesList);
-            this.tabPage1.Controls.Add(this.chooseButton);
             this.tabPage1.Controls.Add(this.arrayNameToChooseTextBox);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
@@ -91,6 +91,17 @@
             this.tabPage1.Text = "int[]";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // saveToFile
+            // 
+            this.saveToFile.Enabled = false;
+            this.saveToFile.Location = new System.Drawing.Point(500, 125);
+            this.saveToFile.Name = "saveToFile";
+            this.saveToFile.Size = new System.Drawing.Size(86, 23);
+            this.saveToFile.TabIndex = 8;
+            this.saveToFile.Text = "Сохранить...";
+            this.saveToFile.UseVisualStyleBackColor = true;
+            this.saveToFile.Click += new System.EventHandler(this.saveToFile_Click);
             // 
             // clearHistoryButton
             // 
@@ -105,9 +116,9 @@
             // 
             // historyTextBox
             // 
-            this.historyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.historyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.historyTextBox.Location = new System.Drawing.Point(6, 154);
             this.historyTextBox.Name = "historyTextBox";
             this.historyTextBox.ReadOnly = true;
@@ -120,9 +131,9 @@
             this.submitButton.Enabled = false;
             this.submitButton.Location = new System.Drawing.Point(299, 71);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.Size = new System.Drawing.Size(86, 23);
             this.submitButton.TabIndex = 5;
-            this.submitButton.Text = "Готово";
+            this.submitButton.Text = "Сортировать!";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
@@ -136,16 +147,6 @@
             this.sortingTypesList.Name = "sortingTypesList";
             this.sortingTypesList.Size = new System.Drawing.Size(150, 30);
             this.sortingTypesList.TabIndex = 4;
-            // 
-            // chooseButton
-            // 
-            this.chooseButton.Location = new System.Drawing.Point(299, 26);
-            this.chooseButton.Name = "chooseButton";
-            this.chooseButton.Size = new System.Drawing.Size(75, 23);
-            this.chooseButton.TabIndex = 3;
-            this.chooseButton.Text = "Выбрать...";
-            this.chooseButton.UseVisualStyleBackColor = true;
-            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
             // 
             // arrayNameToChooseTextBox
             // 
@@ -192,32 +193,16 @@
             this.tabPage2.Text = "ArrayList";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // statusStrip1
+            // saveToFile_list
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 431);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(624, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutMenuButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(624, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // aboutMenuButton
-            // 
-            this.aboutMenuButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutMenuButton.Image")));
-            this.aboutMenuButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.aboutMenuButton.Name = "aboutMenuButton";
-            this.aboutMenuButton.Size = new System.Drawing.Size(102, 22);
-            this.aboutMenuButton.Text = "О программе";
-            this.aboutMenuButton.Click += new System.EventHandler(this.aboutMenuButton_Click);
+            this.saveToFile_list.Enabled = false;
+            this.saveToFile_list.Location = new System.Drawing.Point(500, 125);
+            this.saveToFile_list.Name = "saveToFile_list";
+            this.saveToFile_list.Size = new System.Drawing.Size(86, 23);
+            this.saveToFile_list.TabIndex = 16;
+            this.saveToFile_list.Text = "Сохранить...";
+            this.saveToFile_list.UseVisualStyleBackColor = true;
+            this.saveToFile_list.Click += new System.EventHandler(this.saveToFile_list_Click);
             // 
             // clearHistoryButton_list
             // 
@@ -232,9 +217,9 @@
             // 
             // historyTextBox_list
             // 
-            this.historyTextBox_list.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.historyTextBox_list.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.historyTextBox_list.Location = new System.Drawing.Point(6, 154);
             this.historyTextBox_list.Name = "historyTextBox_list";
             this.historyTextBox_list.ReadOnly = true;
@@ -247,9 +232,9 @@
             this.submitButton_list.Enabled = false;
             this.submitButton_list.Location = new System.Drawing.Point(299, 84);
             this.submitButton_list.Name = "submitButton_list";
-            this.submitButton_list.Size = new System.Drawing.Size(75, 23);
+            this.submitButton_list.Size = new System.Drawing.Size(86, 23);
             this.submitButton_list.TabIndex = 13;
-            this.submitButton_list.Text = "Готово";
+            this.submitButton_list.Text = "Сортировать!";
             this.submitButton_list.UseVisualStyleBackColor = true;
             this.submitButton_list.Click += new System.EventHandler(this.submitButton_list_Click);
             // 
@@ -269,7 +254,7 @@
             // 
             this.chooseButton_list.Location = new System.Drawing.Point(299, 26);
             this.chooseButton_list.Name = "chooseButton_list";
-            this.chooseButton_list.Size = new System.Drawing.Size(75, 23);
+            this.chooseButton_list.Size = new System.Drawing.Size(86, 23);
             this.chooseButton_list.TabIndex = 11;
             this.chooseButton_list.Text = "Выбрать...";
             this.chooseButton_list.UseVisualStyleBackColor = true;
@@ -301,27 +286,42 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Выберите множество:";
             // 
-            // saveToFile
+            // statusStrip1
             // 
-            this.saveToFile.Enabled = false;
-            this.saveToFile.Location = new System.Drawing.Point(500, 125);
-            this.saveToFile.Name = "saveToFile";
-            this.saveToFile.Size = new System.Drawing.Size(86, 23);
-            this.saveToFile.TabIndex = 8;
-            this.saveToFile.Text = "Сохранить...";
-            this.saveToFile.UseVisualStyleBackColor = true;
-            this.saveToFile.Click += new System.EventHandler(this.saveToFile_Click);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 431);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(624, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // saveToFile_list
+            // toolStrip1
             // 
-            this.saveToFile_list.Enabled = false;
-            this.saveToFile_list.Location = new System.Drawing.Point(500, 125);
-            this.saveToFile_list.Name = "saveToFile_list";
-            this.saveToFile_list.Size = new System.Drawing.Size(86, 23);
-            this.saveToFile_list.TabIndex = 16;
-            this.saveToFile_list.Text = "Сохранить...";
-            this.saveToFile_list.UseVisualStyleBackColor = true;
-            this.saveToFile_list.Click += new System.EventHandler(this.saveToFile_list_Click);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutMenuButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(624, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // aboutMenuButton
+            // 
+            this.aboutMenuButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutMenuButton.Image")));
+            this.aboutMenuButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.aboutMenuButton.Name = "aboutMenuButton";
+            this.aboutMenuButton.Size = new System.Drawing.Size(102, 22);
+            this.aboutMenuButton.Text = "О программе";
+            this.aboutMenuButton.Click += new System.EventHandler(this.aboutMenuButton_Click);
+            // 
+            // chooseButton
+            // 
+            this.chooseButton.Location = new System.Drawing.Point(299, 26);
+            this.chooseButton.Name = "chooseButton";
+            this.chooseButton.Size = new System.Drawing.Size(86, 23);
+            this.chooseButton.TabIndex = 12;
+            this.chooseButton.Text = "Выбрать...";
+            this.chooseButton.UseVisualStyleBackColor = true;
+            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
             // 
             // MainForm
             // 
@@ -358,7 +358,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox sortingTypesList;
-        private System.Windows.Forms.Button chooseButton;
         private System.Windows.Forms.TextBox arrayNameToChooseTextBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.RichTextBox historyTextBox;
@@ -373,6 +372,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button saveToFile;
         private System.Windows.Forms.Button saveToFile_list;
+        private System.Windows.Forms.Button chooseButton;
     }
 }
 

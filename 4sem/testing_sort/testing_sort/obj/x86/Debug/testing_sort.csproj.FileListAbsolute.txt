@@ -16,3 +16,13 @@ C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86
 C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.MainForm.resources
 C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.Properties.Resources.resources
 C:\Users\Alexander\Documents\GitHub\proga\4sem\testing_sort\testing_sort\obj\x86\Debug\testing_sort.csproj.GenerateResource.Cache
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.exe
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.pdb
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\bin\Debug\testing_sort.exe
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\bin\Debug\testing_sort.pdb
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.AboutForm.resources
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.MainForm.resources
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\testing_sort.Properties.Resources.resources
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\m11gao\Documents\Visual Studio 2010\Projects\testing_sort\testing_sort\obj\x86\Debug\GenerateResource.write.1.tlog

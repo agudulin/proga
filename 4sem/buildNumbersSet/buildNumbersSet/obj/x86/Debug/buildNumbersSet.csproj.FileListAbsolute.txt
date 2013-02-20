@@ -1,0 +1,5 @@
+c:\users\m11gao\documents\visual studio 2010\Projects\buildNumbersSet\buildNumbersSet\bin\Debug\buildNumbersSet.exe
+c:\users\m11gao\documents\visual studio 2010\Projects\buildNumbersSet\buildNumbersSet\bin\Debug\buildNumbersSet.pdb
+c:\users\m11gao\documents\visual studio 2010\Projects\buildNumbersSet\buildNumbersSet\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\m11gao\documents\visual studio 2010\Projects\buildNumbersSet\buildNumbersSet\obj\x86\Debug\buildNumbersSet.exe
+c:\users\m11gao\documents\visual studio 2010\Projects\buildNumbersSet\buildNumbersSet\obj\x86\Debug\buildNumbersSet.pdb

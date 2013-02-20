@@ -1,4 +1,16 @@
-﻿using System;
+﻿/**
+ * Автор: Гудулин Александр
+ * Дата:  20.02.2013
+ * 
+ * Описание:
+ * оконное Windows-приложение тестирования сортировок. Рассмотрены представления множества в 2-х вариантах:
+ *    а) как массив вида int[]
+ *    b) как ArrayList
+ * Для каждого представления реализуется сортировка QuickSort, ShellSort, а для ArrayList еще и ArrayList.Sort.
+ * Предусмотрена возможность сохранения наглядного результата сравнений сортировок.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -125,6 +137,7 @@ namespace testing_sort
 
                     printArray(arrayToSort, 0, "Отсортированный");
                     appendTextToTheHistory(String.Format("   Время сортировки: {0}", swatch.Elapsed.ToString()));
+                    swatch.Reset();
                     break;
                 case 1:
                     appendTextToTheHistory("   ** ShellSort **");
@@ -141,6 +154,7 @@ namespace testing_sort
                     swatch.Stop();
                     printArray(arrayToSort, 0, "Отсортированный");
                     appendTextToTheHistory(String.Format("   Время сортировки: {0}", swatch.Elapsed.ToString()));
+                    swatch.Reset();
                     break;
                 default:
                     break;
@@ -479,6 +493,7 @@ namespace testing_sort
 
                     printArray_list(arrayToSort, 0, "Отсортированный");
                     appendTextToTheHistory_list(String.Format("   Время сортировки: {0}", swatch.Elapsed.ToString()));
+                    swatch.Reset();
                     break;
                 case 1:
                     appendTextToTheHistory_list("   ** ShellSort **");
@@ -495,6 +510,7 @@ namespace testing_sort
                     swatch.Stop();
                     printArray_list(arrayToSort, 0, "Отсортированный");
                     appendTextToTheHistory_list(String.Format("   Время сортировки: {0}", swatch.Elapsed.ToString()));
+                    swatch.Reset();
                     break;
                 case 2:
                     appendTextToTheHistory_list("   ** ArrayList.Sort **");
@@ -534,8 +550,15 @@ namespace testing_sort
 
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
             {
-                // Save the contents of the RichTextBox into the file
-                historyTextBox.SaveFile(saveFileDialog.FileName);
+                historyTextBox.AppendText(getEnviroment());
+                try
+                {
+                    // Save the contents of the RichTextBox into the file
+                    historyTextBox.SaveFile(saveFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                }
             }
         }
 
@@ -548,9 +571,50 @@ namespace testing_sort
 
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && saveFileDialog.FileName.Length > 0)
             {
-                // Save the contents of the RichTextBox into the file
-                historyTextBox_list.SaveFile(saveFileDialog.FileName);
+                historyTextBox_list.AppendText(getEnviroment());
+                try
+                {
+                    // Save the contents of the RichTextBox into the file
+                    historyTextBox_list.SaveFile(saveFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                }
             }
         }
+
+        private String getEnviroment()
+        {
+            String result = "\n\n";
+            result += "Список всех переменных окружения:\n";
+            IDictionary environmentVariables = Environment.GetEnvironmentVariables();
+            foreach (DictionaryEntry de in environmentVariables)
+            {
+                result += String.Format("  {0} = {1}\n", de.Key, de.Value);
+            }
+            result += "\n\n";
+            result += String.Format("Процессор: {0}\n", environmentVariables["PROCESSOR_IDENTIFIER"]);
+            result += String.Format("Количество процессоров: {0}\n", environmentVariables["NUMBER_OF_PROCESSORS"]);
+
+            result += "\n\n";
+            // Под какой операционной системой мы работаем?
+            result += String.Format("Текущая OS: {0}\n", Environment.OSVersion);
+
+            // Текущий каталог?
+            result += String.Format("Текущий каталог: {0}\n", Environment.CurrentDirectory);
+
+            // А теперь выведем список логических дисков:
+            string[] drives = Environment.GetLogicalDrives();
+            result += String.Format("Cписок логических дисков:");
+            for (int i = 0; i < drives.Length; i++)
+                result += String.Format("  Drive {0} : {1}\n", i, drives[i]);
+
+            // А какая версия платформы .NET у нас используется? 
+            result += String.Format("CurrentVersion of .NET: {0}\n", Environment.Version);
+
+            return result;
+        }
     }
+
+    
 }
